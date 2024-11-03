@@ -1,10 +1,12 @@
-streamlit
 opencv-python
 torch
 torchvision
+streamlit
 Pillow
 matplotlib
 numpy
 requests
+io
+xml.etree.ElementTree
 tqdm
 scikit-image
