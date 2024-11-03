@@ -5,7 +5,7 @@
 This project implements a facial landmark detection system using the Xception model, trained on the ibug dataset. The goal is to accurately detect facial landmarks from images and provide a user-friendly web application for real-time detection. 
 
 ## Try the App
-You can try out the facial landmark detection application here: [Facial Landmark Detection on Streamlit](http://digitrecognizerr.streamlit.app/).
+You can try out the facial landmark detection application here: [Facial Landmark Detection on Streamlit]((https://fld-rd.streamlit.app/)
 
 
 
