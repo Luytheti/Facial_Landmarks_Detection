@@ -1,39 +1,105 @@
-# Facial Landmark Detection using Xception Model
+# Facial Landmark Detection
 
-## Table of Contents
-1. [Introduction](#introduction)
-2. [Model Architecture](#model-architecture)
-3. [Dataset](#dataset)
-4. [Installation](#installation)
-5. [Usage](#usage)
-6. [Results](#results)
-7. [Contributions](#contributions)
-8. [License](#license)
-9. [Contact Information](#contact-information)
 
 ## Introduction
-Facial landmark detection is a crucial step in many computer vision applications such as face recognition, emotion detection, and augmented reality. This project aims to develop an efficient facial landmark detection system using the Xception model, a powerful convolutional neural network architecture that excels in image classification tasks. 
+This project implements a facial landmark detection system using the Xception model, trained on the ibug dataset. The goal is to accurately detect facial landmarks from images and provide a user-friendly web application for real-time detection. You can access the web application [here](http://digitrecognizerr.streamlit.app/).
 
-## Model Architecture
-### Xception Model
-The Xception model is an extension of the Inception architecture that uses depthwise separable convolutions to enhance model efficiency and performance. This model has been trained on a diverse dataset, making it suitable for detecting facial landmarks with high accuracy.
+
+## Table of Contents
+- [Dataset](#dataset)
+- [Xception Model Architecture](#xception-model-architecture)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Data Augmentation](#data-augmentation)
+- [Dataset Splitting](#dataset-splitting)
+- [Training Process](#training-process)
+- [Results](#results)
+- [License](#license)
 
 ## Dataset
-### iBUG Dataset
-This project utilizes the iBUG dataset, which provides a variety of annotated facial images. The dataset is widely used in the research community for benchmarking facial landmark detection algorithms. It contains images of various individuals with different facial expressions, orientations, and lighting conditions, making it ideal for training robust models.
+The model is trained on the [ibug dataset](https://www.kaggle.com/datasets/toxicloser/ibug-300w-large-face-landmark-dataset), which contains diverse facial images with annotated landmarks, commonly used for facial landmark detection tasks.
+
+## Xception Model Architecture
+The Xception model uses depthwise separable convolutions, making it highly effective for image classification and detection tasks. Below is a visual representation of the architecture:
+
+![Xception Model Architecture](https://github.com/Luytheti/Facial_Landmarks_Detection/blob/main/Images/xception-architecture.jpg)
+
+## Requirements
+This project requires the following Python libraries:
+
+- **OpenCV**
+- **Torch**
+- **Torchvision**
+- **Streamlit**
+- **Pillow**
+- **Matplotlib**
+- **NumPy**
+- **Requests**
+- **Io**
+- **ElementTree**
+- **TQDM**
+- **Scikit-image**
 
 ## Installation
-To set up the project, you will need Python 3.x and the following libraries:
-
-- OpenCV
-- PyTorch
-- torchvision
-- Streamlit
-- Matplotlib
-- Pillow
-- Requests
-
-You can install the required libraries using pip:
+To install the required libraries, use:
 
 ```bash
-pip install opencv-python torch torchvision streamlit matplotlib Pillow requests
+pip install -r requirements.txt
+
+```
+
+## Data Augmentation
+Data augmentation was applied to enhance the training dataset's diversity and improve the facial landmark detection model's robustness:
+
+- **Random Jitter**: Introduces slight variations in brightness, contrast, saturation, and hue for resilience against lighting changes.
+- **Random Rotation**: Randomly rotates images and adjusts landmark coordinates for various orientations.
+- **Bounding Boxes**: Adjusts bounding boxes around facial features to align with image transformations.
+- **Random Cropping**: Simulates different scales and perspectives while keeping key facial features visible.
+- **Color Jittering**: Alters image colors to increase invariance to lighting conditions.
+
+These techniques collectively improve the model's performance in real-world applications.
+
+## Dataset Splitting
+The dataset was split into training, validation, and testing subsets:
+
+1. **Total Images**: 6666 images.
+2. **Training Set**: 6000 images (90%).
+3. **Validation Set**: 666 images (10%).
+4. **Testing Set**: 1008 images, kept separate for evaluating model performance.
+
+**DataLoader Creation**:
+- **Training DataLoader**: Batch size of 32 with shuffling.
+- **Validation DataLoader**: Batch size of 64.
+- **Testing DataLoader**: Batch size of 64 for consistency.
+
+## Training Process
+The model was trained for **50 epochs** using 6000 images:
+
+1. **Training Parameters**:
+   - **Batch Size**: 32
+   - **Learning Rate**: 0.00075
+
+2. **Checkpointing**: Saves model and optimizer states, with the best model saved based on validation loss.
+
+3. **Training Loop**: 
+   - Processes data in batches, computes loss, and performs backpropagation.
+   - Prints average training and validation loss for each epoch.
+
+4. **Validation**: Evaluates performance on unseen data after each epoch.
+
+## Results
+
+![Training Loss Graph](https://github.com/Luytheti/Facial_Landmarks_Detection/blob/main/Images/loss_epochs.png) 
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
+
+
+
+
+
+
+
+
