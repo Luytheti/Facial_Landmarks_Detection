@@ -187,7 +187,7 @@ class XceptionNet(nn.Module):
 
 def load_model(filepath, model):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    checkpoint = torch.load(filepath, map_location=device)
+    checkpoint = torch.load(filepath, map_location=device, weights_only=True)
     model.load_state_dict(checkpoint['state_dict'])
     model.to(device)
     model.eval()
