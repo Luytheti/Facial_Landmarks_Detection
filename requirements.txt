@@ -1,13 +1,10 @@
-# Required libraries for Facial Landmark Detection Project
-
+streamlit
 opencv-python
 torch
 torchvision
-streamlit
 Pillow
 matplotlib
 numpy
 requests
 tqdm
 scikit-image
-torchsummary
