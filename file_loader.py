@@ -1,14 +1,17 @@
 import os
 import gdown
 
-# Define the path and Google Drive file ID
-FILE_PATH = r"C:\Users\Rajas Daryapurkar\OneDrive\Desktop\ivlabs\best_model (3).pt"
-FILE_ID = "1aWjzQ6zORefoR_2k1N3P_DKhZtTm0Pcc"  # File ID from the shared link
+# Define the path where you want the model to be saved relative to your project directory
+MODEL_DIR = 'models'  # Define the folder to store the model
+FILE_PATH = os.path.join(MODEL_DIR, 'best_model.pt')  # Modify to store inside 'models' folder
+FILE_ID = "1aWjzQ6zORefoR_2k1N3P_DKhZtTm0Pcc"  # File ID from the shared link on Google Drive
 FILE_URL = f"https://drive.google.com/uc?id={FILE_ID}"
 
 def load_model():
+    # Check if the model already exists
     if not os.path.exists(FILE_PATH):
-        print("Downloading YOLO model from Google Drive...")
+        print("Downloading model from Google Drive...")
+        # Ensure the directory exists where the model will be saved
         os.makedirs(os.path.dirname(FILE_PATH), exist_ok=True)
         try:
             # Download the file using gdown
@@ -21,11 +24,3 @@ def load_model():
         print(f"Model already exists at: {FILE_PATH}")
     
     return FILE_PATH
-
-# Call the function to download and use the model
-model_path = load_model()
-
-if model_path:
-    print(f"Model is ready at: {model_path}")
-else:
-    print("Model download failed.")
