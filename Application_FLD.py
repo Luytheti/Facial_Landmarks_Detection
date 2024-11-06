@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import requests
 from io import BytesIO  
+from file_loader import load_model as download_model
 
 
 
@@ -185,6 +186,7 @@ class XceptionNet(nn.Module):
 
         return x
 
+
 def load_model(filepath, model):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     checkpoint = torch.load(filepath, map_location=device, weights_only=True)
@@ -193,8 +195,16 @@ def load_model(filepath, model):
     model.eval()
     return model
 
-model = XceptionNet(middle_block_n = 6)  
-model = load_model('best_model (3).pt', model)
+# Step 1: Ensure model file is downloaded if it doesn’t exist
+model_path = download_model()  # This will download 'best_model (3).pt' if it's not present
+
+# Step 2: Load model with PyTorch if the download was successful
+if model_path:
+    model = XceptionNet(middle_block_n=6)  
+    model = load_model(model_path, model)
+    print("Model loaded and ready.")
+else:
+    print("Failed to download model.")
 
 
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
