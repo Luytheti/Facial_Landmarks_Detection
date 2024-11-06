@@ -2,8 +2,8 @@ import os
 import gdown
 
 # Define the path and Google Drive file ID
-FILE_PATH = "Dataset"  # Local path where you want to save the file
-FILE_ID = "1YWzNC3rzv2WVSiNUDE57GA4vHpNKhR4P"  # File ID from the shared link
+FILE_PATH = r"C:\Users\Rajas Daryapurkar\OneDrive\Desktop\ivlabs\best_model (3).pt"
+FILE_ID = "1aWjzQ6zORefoR_2k1N3P_DKhZtTm0Pcc"  # File ID from the shared link
 FILE_URL = f"https://drive.google.com/uc?id={FILE_ID}"
 
 def load_model():
