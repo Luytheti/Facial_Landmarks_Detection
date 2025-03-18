@@ -4,7 +4,7 @@ import gdown
 # Define the path where you want the model to be saved relative to your project directory
 MODEL_DIR = 'models'  # Define the folder to store the model
 FILE_PATH = os.path.join(MODEL_DIR, 'best.pt')  # Modify to store inside 'models' folder
-FILE_ID = "1hXfOQw6ZSR_kE9-jDsz_2FH_L-zqCSOm"  # File ID from the shared link on Google Drive
+FILE_ID = "1UUvSas1cqsPVGS7ea-mMm9-ZZSfd6Wrq"  # File ID from the shared link on Google Drive
 FILE_URL = f"https://drive.google.com/uc?id={FILE_ID}"
 
 def load_model():
