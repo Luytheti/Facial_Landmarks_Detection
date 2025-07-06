@@ -9,7 +9,7 @@ import numpy as np
 import requests
 from io import BytesIO  
 from file_loader import load_model as download_model
-
+from PIL import ImageOps 
 
 
 class DepthwiseSeperableConv2d(nn.Module):
@@ -298,10 +298,11 @@ def main():
             st.error(f"Error loading uploaded image: {e}")
 
     if camera_image is not None:
-        try:
-            image = Image.open(camera_image)
-        except Exception as e:
-            st.error(f"Error loading camera image: {e}")
+    try:
+        image = Image.open(camera_image)
+        image = ImageOps.mirror(image)  
+    except Exception as e:
+        st.error(f"Error loading camera image: {e}")
 
     if image is not None:
         image_np = np.array(image)
