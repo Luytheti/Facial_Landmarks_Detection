@@ -249,7 +249,7 @@ def inference_image(image):
     outputs = []
 
     if len(faces) == 0:
-        st.warning("The model failed to detect landmarks because of poor lighting, absence of a face, or extreme side-angle poses ")
+        st.warning("The model failed to detect landmarks because of poor lighting, absence of a face, or extreme side-angle pose")
 
     for (x, y, w, h) in faces:
         crop_img = gray[y: y + h, x: x + w]
